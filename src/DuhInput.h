@@ -5,6 +5,8 @@
 #include <stdint.h>
 #define INPUT_PULLUP -1
 void pinMode(int pin, int mode);
+typedef uint8_t byte;
+
 #endif
 
 #include "utils.h"
@@ -18,9 +20,9 @@ public:
 
 const int SWITCH_DDR = 0b11000001;
 
-void prepSwitch(DuhInput& duhInput, const char *id, uint8_t& ddr);
+void prepSwitch(DuhInput& duhInput, const char *id, byte& ddr);
 void prepButton(DuhInput& duhInput, const char *id, int pin);
 
-bool readSwitch(DuhInput& duhInput, uint8_t& port, const int count);
+bool readSwitch(DuhInput& duhInput, byte& port, const int count);
 bool readButton(DuhInput& duhInput, int pin, char& state);
 #endif
