@@ -1,28 +1,37 @@
-#ifndef DUH_H
-#define DUH_H
+//
+// Created by Jefferson on 6/14/2019.
+//
 
-#ifdef LOCAL_DBG
-#include <stdint.h>
-#define INPUT_PULLUP -1
-void pinMode(int pin, int mode);
-typedef uint8_t byte;
+#ifndef DUH_DUHINPUT_H
+#define DUH_DUHINPUT_H
 
+#include "../compat/compat.h"
+
+#ifndef INPUT_COUNT
+#define INPUT_COUNT 5
 #endif
 
-#include "utils.h"
-
+extern char strEncodeBuffer[64];
+extern bool readBuffer[48];
 class DuhInput {
 public:
-    const char* prefix;
-    const char* id;
-    uint32_t timestamp;
+	const char *prefix;
+	const char *id;
+	bool debounced = false;
+	const byte len;
+	unsigned long lastValid = 0;
+	bool * const data;
+	DuhInput(const char *prefix, const char *id, bool * const data, const byte len);
+
+	virtual bool readInput() = 0;
+	bool poll();
 };
+void encodeBuffer(const bool *data, const byte len, int start = 0);
+void encodeInput(DuhInput *input);
+inline void zeroArray(bool *data, byte len) {
+	for(int i = 0; i < len; i++) {
+		data[i] = 0;
+	}
+}
 
-const int SWITCH_DDR = 0b11000001;
-
-void prepSwitch(DuhInput& duhInput, const char *id, byte& ddr);
-void prepButton(DuhInput& duhInput, const char *id, int pin);
-
-bool readSwitch(DuhInput& duhInput, byte& port, const int count);
-bool readButton(DuhInput& duhInput, int pin, char& state);
-#endif
+#endif //DUH_DUHINPUT_H

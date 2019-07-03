@@ -24,9 +24,13 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+cmake-build-default-mingw/*
+!cmake-build-default-mingw/duh.exe
+!cmake-build-default-mingw/pdcurses.dll
+!cmake-build-default-mingw/libserialport-0.dll

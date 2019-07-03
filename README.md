@@ -1,6 +1,16 @@
 # duh
 dumb user handset
 
+The prebuilt binary is in the [cmake-build-default-mingw] folder, along with the needed dll s for running on Windows. I will try to make a build for OSX soon.
+
+## Configuration
+The serial port can be configured using environmental variables
+
+variable | description
+---|---
+SERIAL_PORT|The location of the serial port (COM1 for example)
+BAUD_RATE|The baud rate for the serial port
+
 ## Summary
 Declares a simple protocol to communicate between a dumb client
 and a remote system.
@@ -28,38 +38,24 @@ local box
 an input immediately (**rpc mode**)
 
 ## Supported inputs
-* push button
-* switches behind a shift register
+* switches behind a I2C port expander
 
 # Protocol Design
 * All messages are ASCII should end with a LF (not shown). 
-* All IDs are capped at 3 characters. 
-* Unless otherwise noted all timestamps are in seconds and are relative to when the local machine was turned on. 
+* All IDs must be 3 characters. 
+* Unless otherwise noted all timestamps are in hexadecimal seconds and are relative to when the local machine was turned on. 
 * All messages are semicolon terminated right before the LF
 * Timestamps are optional (in case you're running it from a serial monitor) but highly suggested
 
 ## Switch
 ### Format
-`SW-<switch array id>:<switch states in hex ascii>;/<timestamp>;`
+`SW-<switch array id>:<switch states in hex ascii>/<timestamp>;`
 ### Notes
 Sent every time a switch in a particular array is modified. Switch states are sent as the ASCII representation of the hex number representing the switch states (1 for on and 0 for off) rounded to the nearest nibble (padded switches will be set to 0). Sent in big-endian order so that the first letter represents the state of switches 0-3, the second represents 4-7, etc
 ### Example
 `SW-0:FF/24;`
 
 Sent when any switch in switch array 0 has been toggled so that every switch in the array is now on
-## Pushbutton
-### Format
-`PB-*pushbutton id*:<P/R for pressed/released>/<timestamp>;`
-
-### Example
-`PB-3:P/38;`
-
-Sent when push button 3 is pressed down. When push button 3 is released, 
-
-`PB-3:R/39;`
-
-will be sent.
-
 ## RPC Request from the remote machine
 ### Format
 `RQ-<request id>:<id of the input to sample>;`
