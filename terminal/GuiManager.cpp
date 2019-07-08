@@ -21,6 +21,7 @@ void GuiManager::startGui() {
 	curs_set(0);
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
+	running = true;
 }
 void GuiManager::pollGui() {
 	int input = getch();
@@ -71,8 +72,8 @@ void GuiManager::pollGui() {
 		selCol = inputs[selInput].first->len - 1;
 	}
 	for(int i = 0; i < inputs.size(); i++) {
-		pair<DuhInput*, WINDOW*> pair = inputs[i];
-		DuhInput *input = pair.first;
+		pair<DuhSwitch*, WINDOW*> pair = inputs[i];
+		DuhSwitch *input = pair.first;
 		WINDOW *win = pair.second;
 		wclear(win);
 		draw_borders(win);
@@ -100,22 +101,19 @@ void GuiManager::pollGui() {
 			wattroff(win, A_REVERSE);
 			mvwprintw(win, 2, rowIdx - 4, intToStr(j));
 		}
-
-		if(input->poll()) {
-			encodeInput(input);
-			move(0, 0);
-			clrtoeol();
-			mvprintw(0, 0, strEncodeBuffer);
-			printf(strEncodeBuffer);
+		char *inputPoll = input->poll();
+		if(inputPoll) {
+			mvprintw(0, 0, inputPoll);
+			printf(inputPoll);
 			printf("\n");
 			if(Serial) {
-				Serial.write(strEncodeBuffer);
+				Serial.write(inputPoll);
 			}
 		}
 		wrefresh(win);
 	}
 }
-void GuiManager::newSwitch(char *id, const byte len) {
+void GuiManager::newSwitch(const char *id, byte len) {
 	LocalSwitch *newInput = new LocalSwitch(id, len);
 	pair<int, int> dims = dimensions(newInput, 80);
 	WINDOW *newWin = newwin(dims.first, dims.second, nextRow, 0);
@@ -123,8 +121,8 @@ void GuiManager::newSwitch(char *id, const byte len) {
 	inputs.push_back(pair<LocalSwitch*, WINDOW*>(newInput, newWin));
 }
 GuiManager::~GuiManager() {
-	for(pair<DuhInput*, WINDOW*> pair : inputs) {
-		DuhInput *input = pair.first;
+	for(pair<DuhSwitch*, WINDOW*> pair : inputs) {
+		DuhSwitch *input = pair.first;
 		WINDOW *win = pair.second;
 
 		free(input->data);
@@ -133,9 +131,10 @@ GuiManager::~GuiManager() {
 	}
 	endwin();
 }
-pair<int, int> GuiManager::dimensions(DuhInput *input, int maxCols) {
+pair<int, int> GuiManager::dimensions(DuhSwitch *input, int maxCols) {
 	//TODO: actually solve out
 	int rows = 5;
+	cout << (int)input->len << ' ' << input -> id << endl;
 	int cols = max(strlen(input->id)+5, input->len*6+6);
 	return pair<int, int>(rows, cols);
 }

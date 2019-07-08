@@ -4,18 +4,17 @@
 
 #include <cstring>
 #include <cstdio>
-#include "DuhInput.h"
+#include "DuhSwitch.h"
 
 char strEncodeBuffer[64];
 bool readBuffer[48];
 
-DuhInput::DuhInput(const char *prefix,
-		const char *id,
+DuhSwitch::DuhSwitch(const char *id,
 		bool * const data,
-		const byte len): prefix(prefix), id(id), len(len), data(data) {
+		const byte len): DuhInput("SW", id), len(len), data(data) {
 	zeroArray(data, len);
 }
-bool DuhInput::poll() {
+char* DuhSwitch::poll() {
 	bool diff = readInput();
 	if(diff) {
 		lastValid = millis();
@@ -23,9 +22,10 @@ bool DuhInput::poll() {
 	}
 	else if(millis() - lastValid > 75 && !debounced) {
 		debounced = true;
-		return true;
+		encodeInput(this);
+		return strEncodeBuffer;
 	}
-	return false;
+	return nullptr;
 }
 /*
  * Decoder functions
@@ -70,7 +70,7 @@ void encodeBuffer(const bool *data, const byte len, int start) {
 	}
 	strEncodeBuffer[j] = 0;
 }
-void encodeInput(DuhInput* input) {
+void encodeInput(DuhSwitch* input) {
 	strncpy(strEncodeBuffer, input->prefix, 2);
 	strEncodeBuffer[2] = '-';
 	strncpy(strEncodeBuffer+3, input->id, 3);

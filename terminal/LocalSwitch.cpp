@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-LocalSwitch::LocalSwitch(const char *id, const byte len): DuhInput("SW", id,  (bool * const)calloc(len, sizeof(bool)), len) {
+LocalSwitch::LocalSwitch(const char *id, const byte len): DuhSwitch(id,  (bool * const)calloc(len, sizeof(bool)), len) {
 	// is that an inline calloc + cast? DAMN RIGHT IT IS
 }
 bool LocalSwitch::readInput() {

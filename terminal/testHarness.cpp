@@ -1,5 +1,5 @@
 #include "testHarness.h"
-#include "../src/DuhInput.h"
+#include "../src/DuhSwitch.h"
 bool nibbleTest[] = {1, 0, 0, 1};
 bool byteTest[] = {1, 1, 0, 1, 0, 0, 0, 1};
 bool oddTest[] = {1, 1, 1};

@@ -6,9 +6,9 @@
 #define DUH_LOCALINPUT_H
 
 #include <cstdlib>
-#include "../src/DuhInput.h"
+#include "../src/DuhSwitch.h"
 
-class LocalSwitch: public DuhInput  {
+class LocalSwitch: public DuhSwitch  {
 public:
 	bool dirty = false;
 	LocalSwitch(const char *id, const byte len);

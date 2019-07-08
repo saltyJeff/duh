@@ -4,7 +4,6 @@
 
 #include "SerialPort.h"
 #include <stdlib.h>
-
 SerialPort::SerialPort() {};
 void SerialPort::begin(unsigned long) {
 	enabled = false;

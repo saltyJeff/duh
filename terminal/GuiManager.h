@@ -18,9 +18,9 @@ private:
 	int selCol = 0;
 	int nextRow = 2;
 	static void draw_borders(WINDOW *win);
-	static pair<int, int> dimensions(DuhInput *input, int maxCols);
+	static pair<int, int> dimensions(DuhSwitch *input, int maxCols);
 public:
-	void newSwitch(char *id, const byte len);
+	void newSwitch(const char *id, byte len);
 	void startGui();
 	void pollGui();
 	bool running = true;
