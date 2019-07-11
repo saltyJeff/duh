@@ -6,9 +6,7 @@
 #include <iostream>
 #include "GuiManager.h"
 #include "../compat/SerialPort.h"
-inline int max(int x, int y) {
-	return (x > y) ? x : y;
-}
+
 char str[6];
 char* intToStr(int i) {
 	sprintf(str, "%d", i);
@@ -25,6 +23,7 @@ void GuiManager::startGui() {
 }
 void GuiManager::pollGui() {
 	int input = getch();
+	bool enterPressedThisFrame = false;
 	switch(input) {
 		case KEY_EXIT:
 		case KEY_F(4):
@@ -49,9 +48,8 @@ void GuiManager::pollGui() {
 			break;
 		case 10: //normal enter
 		case ' ': {
-			LocalSwitch *selected = inputs[selInput].first;
-			selected->data[selCol] = !selected->data[selCol];
-			selected->dirty = true;
+			enterPressedThisFrame = true;
+			enterDown = true;
 			break;
 		}
 		case ERR:
@@ -68,39 +66,16 @@ void GuiManager::pollGui() {
 	if(selInput >= inputs.size()) {
 		selInput = inputs.size() - 1;
 	}
-	if(selCol >= inputs[selInput].first->len) {
-		selCol = inputs[selInput].first->len - 1;
+	if(!enterPressedThisFrame) {
+		enterDown = false;
 	}
 	for(int i = 0; i < inputs.size(); i++) {
-		pair<DuhSwitch*, WINDOW*> pair = inputs[i];
-		DuhSwitch *input = pair.first;
-		WINDOW *win = pair.second;
+		LocalInput *input = inputs[i];
+		WINDOW *win = input->getWindow();
 		wclear(win);
 		draw_borders(win);
-		mvwprintw(win, 0, 0, "SW_");
-		mvwprintw(win, 0, 3, input->id);
-		int rowIdx = 3;
-		for(int j = 0; j < input->len; j++) {
-			if(i == selInput && j == selCol) {
-				wattron(win, A_REVERSE);
-			}
-
-			mvwprintw(win, 3, rowIdx, "[ ");
-			rowIdx += 2;
-			if(input->data[j]) {
-				mvwprintw(win, 3, rowIdx, "X");
-			}
-			else {
-				mvwprintw(win, 3, rowIdx, " ");
-			}
-
-			rowIdx++;
-			mvwprintw(win, 3, rowIdx, " ]");
-			rowIdx += 3;
-
-			wattroff(win, A_REVERSE);
-			mvwprintw(win, 2, rowIdx - 4, intToStr(j));
-		}
+		input->paint(i);
+		wrefresh(win);
 		char *inputPoll = input->poll();
 		if(inputPoll) {
 			mvprintw(0, 0, inputPoll);
@@ -110,33 +85,20 @@ void GuiManager::pollGui() {
 				Serial.write(inputPoll);
 			}
 		}
-		wrefresh(win);
 	}
 }
 void GuiManager::newSwitch(const char *id, byte len) {
-	LocalSwitch *newInput = new LocalSwitch(id, len);
-	pair<int, int> dims = dimensions(newInput, 80);
-	WINDOW *newWin = newwin(dims.first, dims.second, nextRow, 0);
-	nextRow += dims.first;
-	inputs.push_back(pair<LocalSwitch*, WINDOW*>(newInput, newWin));
+	LocalSwitch *newInput = new LocalSwitch(id, len, this);
+	inputs.push_back(newInput);
 }
 GuiManager::~GuiManager() {
-	for(pair<DuhSwitch*, WINDOW*> pair : inputs) {
-		DuhSwitch *input = pair.first;
-		WINDOW *win = pair.second;
-
-		free(input->data);
+	for(LocalInput *input : inputs) {
 		delete input;
-		wdelch(win);
 	}
 	endwin();
 }
-pair<int, int> GuiManager::dimensions(DuhSwitch *input, int maxCols) {
-	//TODO: actually solve out
-	int rows = 5;
-	cout << (int)input->len << ' ' << input -> id << endl;
-	int cols = max(strlen(input->id)+5, input->len*6+6);
-	return pair<int, int>(rows, cols);
+bool GuiManager::enter() {
+	return enterDown;
 }
 void GuiManager::draw_borders(WINDOW *screen) {
 	int x, y, i;

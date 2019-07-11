@@ -13,7 +13,8 @@
 
 extern char strEncodeBuffer[64];
 extern bool readBuffer[48];
-class DuhSwitch: public DuhInput {
+const int DEBOUNCE_DELAY_MS = 50;
+class DuhSwitch: public virtual DuhInput {
 public:
 	bool debounced = false;
 	const byte len;

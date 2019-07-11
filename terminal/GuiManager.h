@@ -13,19 +13,20 @@
 using namespace std;
 class GuiManager {
 private:
-	vector<pair<LocalSwitch*, WINDOW*>> inputs;
-	int selInput = 0;
-	int selCol = 0;
-	int nextRow = 2;
+	vector<LocalInput*> inputs;
 	static void draw_borders(WINDOW *win);
-	static pair<int, int> dimensions(DuhSwitch *input, int maxCols);
+	bool enterDown;
 public:
 	void newSwitch(const char *id, byte len);
 	void startGui();
 	void pollGui();
 	bool running = true;
+	int nextRow = 2;
+	int selInput = 0;
+	int selCol = 0;
+	bool enter();
 	~GuiManager();
 };
 
-
+char* intToStr(int i);
 #endif //DUH_GUIMANAGER_H

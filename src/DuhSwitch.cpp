@@ -20,7 +20,7 @@ char* DuhSwitch::poll() {
 		lastValid = millis();
 		debounced = false;
 	}
-	else if(millis() - lastValid > 75 && !debounced) {
+	else if(millis() - lastValid > DEBOUNCE_DELAY_MS && !debounced) {
 		debounced = true;
 		encodeInput(this);
 		return strEncodeBuffer;

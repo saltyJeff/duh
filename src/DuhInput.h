@@ -16,9 +16,8 @@ class DuhInput {
 public:
 	const char *prefix;
 	const char *id;
-	DuhInput(const char *prefix, const char *id): prefix(prefix), id(id) {
-
-	};
+	virtual ~DuhInput() = default;
+	DuhInput(const char *prefix, const char *id): prefix(prefix), id(id) {};
 
 	virtual char* poll() = 0;
 };
