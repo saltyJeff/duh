@@ -41,15 +41,15 @@ an input immediately (**rpc mode**)
 * switches behind a I2C port expander
 
 # Protocol Design
-* All messages are ASCII should end with a LF (not shown). 
+* All messages are ASCII and are terminated by a semicolon.
+    - A newline between messages will be ignored.
 * All IDs must be 3 characters. 
-* Unless otherwise noted all timestamps are in hexadecimal seconds and are relative to when the local machine was turned on. 
-* All messages are semicolon terminated right before the LF
-* Timestamps are optional (in case you're running it from a serial monitor) but highly suggested
+* **All Checksums are calculated by XOR ing all the bytes of a message before the slash**
+* Checksums are optional (in case you're running it from a serial monitor) but highly suggested
 
 ## Switch
 ### Format
-`SW-<switch array id>:<switch states in hex ascii>/<timestamp>;`
+`SW-<switch array id>:<switch states in hex ascii>/<checksum>;`
 ### Notes
 Sent every time a switch in a particular array is modified. Switch states are sent as the ASCII representation of the hex number representing the switch states (1 for on and 0 for off) rounded to the nearest nibble (padded switches will be set to 0). Sent in big-endian order so that the first letter represents the state of switches 0-3, the second represents 4-7, etc
 ### Example

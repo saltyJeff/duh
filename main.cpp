@@ -12,6 +12,9 @@ using namespace std;
 #include "include/libserialport.h"
 
 int main(int argc, char *argv[]) {
+#ifdef DEBUG
+	test();
+#endif
 	GuiManager manager;
 	manager.startGui();
 	manager.newSwitch("potato", 4);

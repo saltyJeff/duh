@@ -20,7 +20,7 @@ LocalSwitch::LocalSwitch(const char *id, const byte len, GuiManager *gui): Local
 	win = newwin(rows, cols, gui->nextRow, 0);
 	gui->nextRow += rows;
 }
-bool LocalSwitch::readInput() {
+bool LocalSwitch::poll() {
 	if(dirty) {
 		dirty = false;
 		return true;

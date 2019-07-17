@@ -8,12 +8,42 @@ void preTestEncode() {
 
 }
 void testEncode() {
-	encodeBuffer(nibbleTest, 4);
-	assert(!strcmp(strEncodeBuffer, "9"));
-	encodeBuffer(byteTest, 8);
-	assert(!strcmp(strEncodeBuffer, "D1"));
-	encodeBuffer(oddTest, 3);
-	assert(!strcmp(strEncodeBuffer, "E"));
-	encodeBuffer(longTest, 11);
-	assert(!strcmp(strEncodeBuffer, "D12"));
+
+}
+
+void preTestRead() {
+	char goodChecksum[] = "SW-the:0020/68;";
+	char badChecksum[] = "SW-the:0020/69;";
+	char noChecksum[] = "SW-the:0020;";
+
+	int goodLen = strlen(goodChecksum);
+	int badLen = strlen(badChecksum);
+	int noLen = strlen(noChecksum);
+
+	for(int i = 0; i < goodLen; i++) {
+		char c = goodChecksum[i];
+		assert(readDuh(c) == (c == ';'));
+		if(c == ';') {
+			assert(cachedInput.hasChecksum);
+		}
+	}
+	for(int i = 0; i < badLen; i++) {
+		char c = badChecksum[i];
+		assert(!readDuh(c));
+		if(c == ';') {
+			assert(cachedInput.hasChecksum);
+		}
+	}
+	for(int i = 0; i < noLen; i++) {
+		char c = noChecksum[i];
+		assert(readDuh(c) == (c == ';'));
+		if(c == ';') {
+			assert(!cachedInput.hasChecksum);
+		}
+	}
+}
+void testRead() {
+	assert(!strcmp(cachedInput.prefix, "SW"));
+	assert(!strcmp(cachedInput.id, "the"));
+	assert(!strcmp(cachedInput.data, "0020"));
 }

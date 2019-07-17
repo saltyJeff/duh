@@ -12,17 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9b87138-1bff-4c18-b014-df6fc7ba3145" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/terminal/LocalInput.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DuhInput.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-default-mingw/duh.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compat/compat.h" beforeDir="false" afterPath="$PROJECT_DIR$/compat/compat.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuhInput.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuhInput.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuhSwitch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuhSwitch.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuhSwitch.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuhSwitch.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/terminal/GuiManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/GuiManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terminal/GuiManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/GuiManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/terminal/LocalSwitch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/LocalSwitch.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/terminal/LocalSwitch.h" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/LocalSwitch.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terminal/testHarness.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/testHarness.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terminal/testHarness.h" beforeDir="false" afterPath="$PROJECT_DIR$/terminal/testHarness.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug-mingw/" />
@@ -54,31 +58,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/terminal/LocalSwitch.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="1">
+              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
               <folding>
                 <element signature="e#45#69#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/terminal/LocalInput.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-              <folding>
-                <element signature="e#97#125#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/terminal/GuiManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="-118">
+              <caret line="86" column="40" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
               <folding>
                 <element signature="e#44#62#0" expanded="true" />
               </folding>
@@ -99,31 +82,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuhSwitch.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            <state relative-caret-position="51">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/terminal/testHarness.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="545">
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
               <folding>
-                <element signature="e#45#63#0" expanded="true" />
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/terminal/LocalSwitch.h">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DuhInput.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/terminal/GuiManager.h">
+        <entry file="file://$PROJECT_DIR$/terminal/testHarness.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+            <state relative-caret-position="273">
+              <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
               <folding>
-                <element signature="e#95#114#0" expanded="true" />
+                <element signature="e#98#117#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,10 +124,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuhSwitch.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="102">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
               <folding>
-                <element signature="e#94#123#0" expanded="true" />
                 <element signature="e#166#187#0" expanded="true" />
               </folding>
             </state>
@@ -143,12 +134,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="291">
+                <caret line="47" selection-start-line="47" selection-end-line="47" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuhInput.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="119">
+              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compat/compat.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
               <folding>
-                <element signature="e#92#121#0" expanded="true" />
+                <element signature="e#223#240#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,7 +174,6 @@
       <find>localinpu</find>
       <find>localswitch</find>
       <find>dirty</find>
-      <find>printf</find>
       <find>tunestano</find>
       <find>virtual</find>
       <find>termi</find>
@@ -176,6 +187,10 @@
       <find>inttostr</find>
       <find>print</find>
       <find>polling</find>
+      <find>timestamp</find>
+      <find>stre</find>
+      <find>printf</find>
+      <find>write</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,22 +209,24 @@
         <option value="$PROJECT_DIR$/terminal/SerialPort.cpp" />
         <option value="$PROJECT_DIR$/terminal/SerialPort.h" />
         <option value="$PROJECT_DIR$/compat/SerialPort.h" />
-        <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/compat/compat.h" />
         <option value="$PROJECT_DIR$/terminal/LocalInput.cpp" />
-        <option value="$PROJECT_DIR$/src/DuhInput.cpp" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/compat/SerialPort.cpp" />
         <option value="$PROJECT_DIR$/terminal/GuiManager.h" />
         <option value="$PROJECT_DIR$/terminal/LocalInput.h" />
-        <option value="$PROJECT_DIR$/terminal/LocalSwitch.h" />
-        <option value="$PROJECT_DIR$/src/DuhInput.h" />
-        <option value="$PROJECT_DIR$/src/DuhSwitch.h" />
-        <option value="$PROJECT_DIR$/src/DuhSwitch.cpp" />
-        <option value="$PROJECT_DIR$/terminal/GuiManager.cpp" />
-        <option value="$PROJECT_DIR$/terminal/LocalSwitch.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/terminal/LocalSwitch.h" />
+        <option value="$PROJECT_DIR$/terminal/LocalSwitch.cpp" />
+        <option value="$PROJECT_DIR$/terminal/GuiManager.cpp" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/terminal/testHarness.cpp" />
+        <option value="$PROJECT_DIR$/terminal/testHarness.h" />
+        <option value="$PROJECT_DIR$/src/DuhInput.h" />
+        <option value="$PROJECT_DIR$/src/DuhInput.cpp" />
+        <option value="$PROJECT_DIR$/compat/compat.h" />
+        <option value="$PROJECT_DIR$/src/DuhSwitch.cpp" />
+        <option value="$PROJECT_DIR$/src/DuhSwitch.h" />
       </list>
     </option>
   </component>
@@ -225,7 +242,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -236,18 +252,23 @@
             <path>
               <item name="duh" type="b2602c69:ProjectViewProjectNode" />
               <item name="duh" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
+              <item name="cmake-build-default-mingw" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="duh" type="b2602c69:ProjectViewProjectNode" />
               <item name="duh" type="462c0819:PsiDirectoryNode" />
-              <item name="platforms" type="462c0819:PsiDirectoryNode" />
-              <item name="windows" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duh" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duh" type="462c0819:PsiDirectoryNode" />
+              <item name="terminal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -308,17 +329,17 @@
       <workItem from="1562106657109" duration="13500000" />
       <workItem from="1562562787569" duration="1946000" />
       <workItem from="1562828678864" duration="5753000" />
+      <workItem from="1563342945376" duration="8653000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51885000" />
+    <option name="totallyTimeSpent" value="60538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16950959" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17110874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -332,9 +353,9 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="CMake" order="9" weight="0.3186969" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3206934" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.3206934" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49946696" visible="true" weight="0.3206934" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -343,16 +364,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/terminal/testHarness.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          <folding>
-            <element signature="e#98#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/curses/curses.h" />
     <entry file="file://$PROJECT_DIR$/curses/wincon/Makefile" />
     <entry file="file://$PROJECT_DIR$/curses/wincon/pdcdisp.c" />
@@ -396,28 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="187">
-            <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compat/compat.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compat/SerialPort.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
@@ -436,16 +425,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-default-mingw/hi.txt" />
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding>
-            <element signature="e#155#188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/compat/SerialPort.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -456,60 +435,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/terminal/LocalInput.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/terminal/testHarness.cpp">
+    <entry file="file://$PROJECT_DIR$/terminal/LocalInput.cpp" />
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/terminal/LocalSwitch.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuhSwitch.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding>
-            <element signature="e#45#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuhSwitch.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#94#123#0" expanded="true" />
-            <element signature="e#166#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuhInput.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#92#121#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/terminal/LocalInput.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="170">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
             <element signature="e#97#125#0" expanded="true" />
@@ -517,9 +453,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/terminal/LocalSwitch.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/terminal/GuiManager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
+        <state relative-caret-position="177">
           <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
           <folding>
             <element signature="e#95#114#0" expanded="true" />
@@ -527,10 +470,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="291">
+            <caret line="47" selection-start-line="47" selection-end-line="47" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding>
+            <element signature="e#155#188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/terminal/GuiManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="-118">
+          <caret line="86" column="40" selection-start-line="86" selection-start-column="40" selection-end-line="86" selection-end-column="40" />
           <folding>
             <element signature="e#44#62#0" expanded="true" />
           </folding>
@@ -539,18 +507,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/terminal/LocalSwitch.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="1">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
           <folding>
             <element signature="e#45#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/terminal/testHarness.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
+        <state relative-caret-position="545">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/terminal/testHarness.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
+          <folding>
+            <element signature="e#98#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compat/compat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="e#223#240#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuhSwitch.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuhSwitch.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#166#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuhInput.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuhInput.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

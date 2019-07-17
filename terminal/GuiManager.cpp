@@ -76,13 +76,15 @@ void GuiManager::pollGui() {
 		draw_borders(win);
 		input->paint(i);
 		wrefresh(win);
-		char *inputPoll = input->poll();
-		if(inputPoll) {
-			mvprintw(0, 0, inputPoll);
-			printf(inputPoll);
+		if(input->poll()) {
+			input->serialize();
+			move(0,0);
+			clrtoeol();
+			mvprintw(0, 0, writeBuffer);
+			printf(writeBuffer);
 			printf("\n");
 			if(Serial) {
-				Serial.write(inputPoll);
+				Serial.write(writeBuffer);
 			}
 		}
 	}

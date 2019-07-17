@@ -10,6 +10,8 @@ typedef uint8_t byte;
 const int INPUT_PULLUP = -1;
 inline void pinMode(int pin, int mode) {}
 #include <chrono>
+#include <cstdio>
+#include <cstring>
 using namespace std::chrono;
 inline unsigned long millis() {
 	milliseconds ms = duration_cast< milliseconds >(

@@ -13,7 +13,7 @@ class LocalSwitch: public LocalInput, public DuhSwitch {
 public:
 	bool dirty = false;
 	LocalSwitch(const char *id, const byte len, GuiManager *gui);
-	bool readInput();
+	bool poll();
 	~LocalSwitch() {
 		free(data);
 	}
