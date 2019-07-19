@@ -19,9 +19,16 @@ void GuiManager::startGui() {
 	curs_set(0);
 	keypad(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
+	needsRelayout();
 	running = true;
 }
 void GuiManager::pollGui() {
+	if(needsRelayout()) {
+		nextRow = 2;
+		for(LocalInput *input : inputs) {
+			input->layout();
+		}
+	}
 	int input = getch();
 	bool enterPressedThisFrame = false;
 	switch(input) {
@@ -119,4 +126,20 @@ void GuiManager::draw_borders(WINDOW *screen) {
 		mvwprintw(screen, 0, i, "-");
 		mvwprintw(screen, y - 1, i, "-");
 	}
+}
+bool GuiManager::needsRelayout() {
+	int y, x;
+	if(is_termresized() || (maxX == 0 && maxY == 0)) {
+		resize_term(0,0);
+		getmaxyx(stdscr, y, x);
+		bool ret = false;
+		if(y != maxY || x != maxX) {
+			ret = true;
+		}
+		maxY = y;
+		maxX = x;
+		cout << "RESIZED" << endl;
+		return ret;
+	}
+	return false;
 }

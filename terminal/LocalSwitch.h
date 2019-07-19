@@ -18,6 +18,7 @@ public:
 		free(data);
 	}
 	void paint(int index);
+	virtual void layout();
 };
 
 

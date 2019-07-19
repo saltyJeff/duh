@@ -12,6 +12,8 @@ inline void pinMode(int pin, int mode) {}
 #include <chrono>
 #include <cstdio>
 #include <cstring>
+#include <cerrno>
+#include <cstdlib>
 using namespace std::chrono;
 inline unsigned long millis() {
 	milliseconds ms = duration_cast< milliseconds >(
@@ -22,6 +24,8 @@ inline unsigned long millis() {
 #include "SerialPort.h"
 #else
 #include <Arduino.h>
+#include <errno.h>
+#include <util/crc16.h>
 #endif
 
 #endif

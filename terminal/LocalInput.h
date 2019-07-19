@@ -21,6 +21,7 @@ public:
 	virtual WINDOW *getWindow() {
 		return win;
 	}
+	virtual void layout() = 0;
 	virtual ~LocalInput() {
 		if(win != nullptr) {
 			wdelch(win);

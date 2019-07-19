@@ -1,5 +1,6 @@
 #include "testHarness.h"
 #include "../src/DuhSwitch.h"
+#include "../src/DuhRead.h"
 bool nibbleTest[] = {1, 0, 0, 1};
 bool byteTest[] = {1, 1, 0, 1, 0, 0, 0, 1};
 bool oddTest[] = {1, 1, 1};
@@ -12,7 +13,7 @@ void testEncode() {
 }
 
 void preTestRead() {
-	char goodChecksum[] = "SW-the:0020/68;";
+	char goodChecksum[] = "SW-the:0020/7C17;";
 	char badChecksum[] = "SW-the:0020/69;";
 	char noChecksum[] = "SW-the:0020;";
 

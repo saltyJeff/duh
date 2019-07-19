@@ -11,14 +11,16 @@ using namespace std;
 inline int max(int x, int y) {
 	return (x > y) ? x : y;
 }
+inline int min(int x, int y) {
+	return (x < y) ? x : y;
+}
+const double COLS_PER_SWITCH = 7;
+
 LocalSwitch::LocalSwitch(const char *id, const byte len, GuiManager *gui): LocalInput(gui),
 	DuhSwitch(id,  (bool * const)calloc(len, sizeof(bool)), len),
-	DuhInput("SW", id){
+	DuhInput("SW", id) {
 	// is that an inline calloc + cast? DAMN RIGHT IT IS
-	int rows = 5;
-	int cols = max(strlen(id)+5, len*6+6);
-	win = newwin(rows, cols, gui->nextRow, 0);
-	gui->nextRow += rows;
+	layout();
 }
 bool LocalSwitch::poll() {
 	if(dirty) {
@@ -27,10 +29,26 @@ bool LocalSwitch::poll() {
 	}
 	return false;
 }
+void LocalSwitch::layout() {
+	int colsToHold = COLS_PER_SWITCH * len + 5;
+	int rows = (int)((colsToHold + 0.0) / (gui->maxCols()) + 0.5);
+	if(rows < 1) {
+		rows = 1;
+	}
+	rows *= 5;
+	int cols = min(colsToHold, gui->maxCols());
+	if(win != nullptr) {
+		wdelch(win);
+	}
+	win = newwin(rows, cols, gui->nextRow, 0);
+	gui->nextRow += rows;
+	cout << rows << " " << cols << endl;
+}
 void LocalSwitch::paint(int index) {
 	mvwprintw(win, 0, 0, "SW_");
 	mvwprintw(win, 0, 3, id);
 	int rowIdx = 3;
+	int col = 3;
 	bool isSelected = index == gui->selInput;
 	if(isSelected) {
 		if(gui->selCol >= len) {
@@ -47,20 +65,25 @@ void LocalSwitch::paint(int index) {
 			wattron(win, A_REVERSE);
 		}
 
-		mvwprintw(win, 3, rowIdx, "[ ");
+		//newline detection
+		if(rowIdx + 5 > gui->maxCols()) {
+			col += 3;
+			rowIdx = 3;
+		}
+		mvwprintw(win, col, rowIdx, "[ ");
 		rowIdx += 2;
 		if(data[i]) {
-			mvwprintw(win, 3, rowIdx, "X");
+			mvwprintw(win, col, rowIdx, "X");
 		}
 		else {
-			mvwprintw(win, 3, rowIdx, " ");
+			mvwprintw(win, col, rowIdx, " ");
 		}
 
 		rowIdx++;
-		mvwprintw(win, 3, rowIdx, " ]");
+		mvwprintw(win, col, rowIdx, " ]");
 		rowIdx += 3;
 
 		wattroff(win, A_REVERSE);
-		mvwprintw(win, 2, rowIdx - 4, intToStr(i));
+		mvwprintw(win, col - 1, rowIdx - 4, intToStr(i));
 	}
 }

@@ -44,7 +44,7 @@ an input immediately (**rpc mode**)
 * All messages are ASCII and are terminated by a semicolon.
     - A newline between messages will be ignored.
 * All IDs must be 3 characters. 
-* **All Checksums are calculated by XOR ing all the bytes of a message before the slash**
+* **All Checksums are calculated by the Fletcher 16 of all the bytes of a message before the slash**
 * Checksums are optional (in case you're running it from a serial monitor) but highly suggested
 
 ## Switch

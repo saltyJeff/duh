@@ -24,21 +24,5 @@ public:
 	virtual void encodeData() = 0;
 	void serialize();
 };
-byte checksum(const char *arr, const byte len);
-
-// read stuff
-extern char readBuffer[32];
-//char lengths are 1+ the minimum to hold the null byte
-struct DuhInputData {
-public:
-	char prefix[3] = "";
-	char id[4] = "";
-	char data[32] = "";
-	char checksum[3] = "";
-	bool hasChecksum;
-};
-extern DuhInputData cachedInput;
-extern byte readIndex;
-bool readDuh(char c);
 
 #endif //DUH_DUHINPUT_H
