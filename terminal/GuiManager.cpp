@@ -12,6 +12,9 @@ char* intToStr(int i) {
 	sprintf(str, "%d", i);
 	return str;
 }
+
+bool termResized = false;
+
 void GuiManager::startGui() {
 	initscr();
 	noecho();
@@ -59,6 +62,9 @@ void GuiManager::pollGui() {
 			enterDown = true;
 			break;
 		}
+		case KEY_RESIZE:
+		    termResized = true;
+		    break;
 		case ERR:
 		default:
 			break;
@@ -127,6 +133,17 @@ void GuiManager::draw_borders(WINDOW *screen) {
 		mvwprintw(screen, y - 1, i, "-");
 	}
 }
+
+#ifdef __APPLE__
+bool is_termresized() {
+    if(!termResized) {
+        return false;
+    }
+    termResized = false;
+    return true;
+}
+#endif
+
 bool GuiManager::needsRelayout() {
 	int y, x;
 	if(is_termresized() || (maxX == 0 && maxY == 0)) {
