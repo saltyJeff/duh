@@ -34,3 +34,6 @@ cmake-build-default-mingw/*
 !cmake-build-default-mingw/duh.exe
 !cmake-build-default-mingw/pdcurses.dll
 !cmake-build-default-mingw/libserialport-0.dll
+
+cmake-build-default/*
+!cmake-build-default/duh

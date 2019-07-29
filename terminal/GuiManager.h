@@ -8,7 +8,7 @@
 #include "curses.h"
 #include "LocalSwitch.h"
 #include <vector>
-#include "libserialport.h"
+#include "../include/libserialport.h"
 
 using namespace std;
 class GuiManager {

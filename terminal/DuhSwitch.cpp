@@ -44,7 +44,7 @@ void DuhSwitch::encodeData() {
 	if(i < len) {
 		nibble = 0;
 		for(; i < len; i++) {
-			nibble |= data[i] << len - i;
+			nibble |= data[i] << (len - i);
 		}
 		writeBuffer[writeIndex] = nibbleToChar(nibble);
 		writeIndex++;

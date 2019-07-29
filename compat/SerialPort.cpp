@@ -3,9 +3,7 @@
 //
 
 #include "SerialPort.h"
-#include <stdlib.h>
-#include <cstdio>
-
+#include <cstdlib>
 SerialPort::SerialPort() {};
 void SerialPort::begin(unsigned long) {
 	enabled = false;
@@ -29,29 +27,15 @@ void SerialPort::begin(unsigned long) {
 	enabled = true;
 }
 int SerialPort::available() {
-	if(!enabled) {
-		return 0;
-	}
 	return sp_input_waiting(port);
 }
 int SerialPort::read() {
-	if(!enabled) {
-		return -1;
-	}
 	char c;
 	sp_return ret = sp_blocking_read(port, &c, 1, 0);
 	if(ret != sp_return::SP_OK) {
 		return -1;
 	}
 	return c;
-}
-int SerialPort::write(uint8_t val) {
-	printf("%c", val);
-	if(!enabled) {
-		return 1;
-	}
-	sp_blocking_write(port, &val, 1, 0);
-	return 1;
 }
 int SerialPort::write(char *str) {
 	int i = 0;
@@ -60,6 +44,10 @@ int SerialPort::write(char *str) {
 		i++;
 	}
 	return i;
+}
+int SerialPort::write(uint8_t val) {
+	sp_blocking_write(port, &val, 1, 0);
+	return 1;
 }
 int SerialPort::write(char *str, int len) {
 	int i = 0;

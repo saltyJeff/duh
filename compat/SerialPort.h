@@ -6,7 +6,7 @@
 #define DUH_SERIALPORT_H
 
 #include <cstdint>
-#include "libserialport.h"
+#include "../include/libserialport.h"
 
 #define SERIAL_5N1 0x00
 #define SERIAL_6N1 0x02
