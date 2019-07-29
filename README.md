@@ -34,6 +34,12 @@ local box
 ## Operation mode
 
 1. The local will send deltas of the input in the format specified below (**event mode**)
+    - the remote box will automatically send an ASCII ACK in response to a valid message or
+    a NAK in response to an invalid checksum (if provided). It is up to the local box to determine
+    whether it should operate in this synchronous request-response mode or just discard the bits
+    
+    - *note: the ACK and NAK are the only non-printable characters used as they are not
+    intended to be sent non-programmatically*
 2. The remote box can also send a request for the local box to sample
 an input immediately (**rpc mode**)
 
@@ -66,19 +72,19 @@ The &lt;id of the input to sample&gt; is specified as:
 `SW/PB-<id>`
 
 ### Example
-`RQ-420:SW-3;`
+`RQ-420:SW-ABC;`
 
 Sends a request to sample switch array 3. The corresponding reply (see below) will use 420 to distinguish the reply
 
 ## RPC response from the remote machine
 ### Format
-`RS-<request id>:<value that was requested>/<timestamp when the requested data was last updated>;`
+`RS-<request id>:<value that was requested>;`
 
 ### Notes
 The &lt;request id&gt; will be the same as the request id used when requesting the sample (see above).
 Note that the response doesn't include which location the data sample came from (the remote box is responsible for keeping track of the mapping between request id and requested sample).
 
 ### Example
-`RS-420:0F/220;`
+`RS-420:0F;`
 
 Sends a response to the example request above. The state of the switches is 0F from left to right, and the data was valid as of time stamp 220.

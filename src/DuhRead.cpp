@@ -10,14 +10,17 @@ char readBuffer[32];
 DuhInputData cachedInput;
 
 bool tryFillCache();
-bool readDuh(char c) {
+byte readDuh(char c) {
+	if(c < 32) {
+		return NON_PRINTABLE; //ignore non-printable characters
+	}
 	readBuffer[readIndex++] = c;
 	readIndex = readIndex % 32;
 	if(c == ';') {
 		readIndex = 0;
-		return tryFillCache();
+		return tryFillCache() ? SEND_ACK : SEND_NAK;
 	}
-	return false;
+	return SEND_NOTHING;
 }
 // finite state machine states for the reading
 char *currentField;

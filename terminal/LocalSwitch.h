@@ -6,7 +6,7 @@
 #define DUH_LOCALSWITCH_H
 
 #include <cstdlib>
-#include "../src/DuhSwitch.h"
+#include "DuhSwitch.h"
 #include "LocalInput.h"
 
 class LocalSwitch: public LocalInput, public DuhSwitch {

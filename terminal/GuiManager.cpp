@@ -88,11 +88,8 @@ void GuiManager::pollGui() {
 			move(0,0);
 			clrtoeol();
 			mvprintw(0, 0, writeBuffer);
-			printf(writeBuffer);
+			Serial.write(writeBuffer);
 			printf("\n");
-			if(Serial) {
-				Serial.write(writeBuffer);
-			}
 		}
 	}
 }

@@ -43,9 +43,11 @@ public:
 	void end();
 	int available();
 	int read();
+
 	int write(uint8_t val);
 	int write(char *str);
 	int write(char *str, int len);
+
 	inline operator bool() { return enabled; }
 	~SerialPort();
 };

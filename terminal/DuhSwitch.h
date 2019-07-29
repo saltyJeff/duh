@@ -5,7 +5,7 @@
 #ifndef DUH_DUHSWITCH_H
 #define DUH_DUHSWITCH_H
 
-#include "DuhInput.h"
+#include "../src/DuhInput.h"
 #ifndef INPUT_COUNT
 #define INPUT_COUNT 5
 #endif

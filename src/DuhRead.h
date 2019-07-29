@@ -21,6 +21,11 @@ public:
 };
 extern DuhInputData cachedInput;
 extern byte readIndex;
-bool readDuh(char c);
+byte readDuh(char c);
+
+const byte SEND_NOTHING = 0;
+const byte SEND_ACK = 1;
+const byte SEND_NAK = 2;
+const byte NON_PRINTABLE = 3;
 
 #endif //DUH_DUHREAD_H

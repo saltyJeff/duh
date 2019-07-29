@@ -3,15 +3,20 @@
 
 using namespace std;
 
+#ifdef CLI
 #ifdef DEBUG
 #include "terminal/testHarness.h"
 #endif
-
 #include "terminal/LocalSwitch.h"
 #include "terminal/GuiManager.h"
 #include "include/libserialport.h"
+#else
+extern void setup();
+extern void loop();
+#endif
 
 int main(int argc, char *argv[]) {
+#ifdef CLI
 #ifdef DEBUG
 	test();
 #endif
@@ -23,5 +28,12 @@ int main(int argc, char *argv[]) {
 	while(manager.running) {
 		manager.pollGui();
 	}
+#else
+	// arduino simulation
+	setup();
+	while(true) {
+		loop();
+	}
+#endif
 	return 0;
 }

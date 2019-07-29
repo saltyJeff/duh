@@ -1,5 +1,5 @@
 #include "testHarness.h"
-#include "../src/DuhSwitch.h"
+#include "DuhSwitch.h"
 #include "../src/DuhRead.h"
 bool nibbleTest[] = {1, 0, 0, 1};
 bool byteTest[] = {1, 1, 0, 1, 0, 0, 0, 1};
@@ -23,21 +23,24 @@ void preTestRead() {
 
 	for(int i = 0; i < goodLen; i++) {
 		char c = goodChecksum[i];
-		assert(readDuh(c) == (c == ';'));
+		byte readRes = readDuh(c);
+		assert(readRes != SEND_NAK);
 		if(c == ';') {
 			assert(cachedInput.hasChecksum);
 		}
 	}
 	for(int i = 0; i < badLen; i++) {
 		char c = badChecksum[i];
-		assert(!readDuh(c));
+		byte readRes = readDuh(c);
+		assert(readRes != SEND_ACK);
 		if(c == ';') {
 			assert(cachedInput.hasChecksum);
 		}
 	}
 	for(int i = 0; i < noLen; i++) {
 		char c = noChecksum[i];
-		assert(readDuh(c) == (c == ';'));
+		byte readRes = readDuh(c);
+		assert(readRes != SEND_NAK);
 		if(c == ';') {
 			assert(!cachedInput.hasChecksum);
 		}
