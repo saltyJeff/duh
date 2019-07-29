@@ -24,5 +24,6 @@ public:
 	virtual void encodeData() = 0;
 	void serialize();
 };
+void requestInput(char *reqId, char *prefix, char *inputId);
 
 #endif //DUH_DUHINPUT_H
