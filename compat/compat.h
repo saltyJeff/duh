@@ -7,10 +7,6 @@
 #ifdef DESKTOP
 #include <stdint.h>
 typedef uint8_t byte;
-const uint8_t OUTPUT = 0;
-const uint8_t INPUT_PULLUP = 1;
-const uint8_t INPUT = 2;
-inline void pinMode(int pin, int mode) {}
 #include <chrono>
 #include <cstdio>
 #include <cstring>
@@ -23,7 +19,6 @@ inline unsigned long millis() {
 	);
 	return ms.count();
 }
-#include "SerialPort.h"
 #else
 #include <Arduino.h>
 #include <errno.h>

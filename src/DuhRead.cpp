@@ -5,73 +5,87 @@
 #include "DuhRead.h"
 #include "checksum.h"
 
-byte readIndex = 0;
-char readBuffer[32];
-DuhInputData cachedInput;
+DuhInputCache input;
+char readBuffer[MAX_MESSAGE_SIZE + 1] = "";
 
-bool tryFillCache();
+// finite state machine states for the parsing
+char *currentField = input.prefix;
+byte currentMaxLen = MAX_PREFIX_LEN;
+byte currentIndex = 0;
+byte fieldsWritten = 0;
+
+bool transitionChar(char c);
+
 byte readDuh(char c) {
 	if(c < 32) {
-		return NON_PRINTABLE; //ignore non-printable characters
+		return WARNING_DISCARDED; //ignore non-printable characters
 	}
-	readBuffer[readIndex++] = c;
-	readIndex = readIndex % 32;
+	if(transitionChar(c) && c != ';') {
+		return SEND_NOTHING;
+	}
+	//printf("STATE: %c field: %s\n", c, currentField);
 	if(c == ';') {
-		readIndex = 0;
-		return tryFillCache() ? SEND_ACK : SEND_NAK;
+		if (fieldsWritten < 2) {
+			//not valid condition
+			fieldsWritten = 0;
+			input.hasChecksum = false;
+			return WARNING_DISCARDED; //received incomplete message, disposing
+		}
+		fieldsWritten = 0;
+		if (input.hasChecksum) {
+			input.hasChecksum = false;
+			// parse the checksum value from the checksum field
+			uint16_t challenge = strtol(input.checksum, NULL, 16);
+			if (challenge == 0 && errno != 0) {
+				return SEND_NAK;
+			}
+			byte bytesToHash = sprintf(readBuffer, PACKET_NO_CHECKSUM, input.prefix, input.id,
+			                           input.data);
+			uint16_t sum = checksum(readBuffer, bytesToHash);
+			if (sum != challenge) {
+				return SEND_NAK;
+			}
+		}
+		return SEND_ACK;
 	}
-	return SEND_NOTHING;
+	if(currentIndex < currentMaxLen) {
+		currentField[currentIndex++] = c;
+		return SEND_NOTHING;
+	}
+	//WARNING STATE: current field is full but we haven't transitioned yet. will throwaway but give warning
+	fieldsWritten = 0;
+	return WARNING_DISCARDED;
 }
-// finite state machine states for the reading
-char *currentField;
-byte maxLen = 2;
-byte cacheFieldIndex;
-byte checksumIndex;
-bool tryFillCache() {
-	byte i = cacheFieldIndex = 0;
-	currentField = cachedInput.prefix;
-	maxLen = 2;
-	cachedInput.hasChecksum = false;
-
-	while(readBuffer[i] != ';') {
-		byte c = readBuffer[i];
-		switch(c) {
-			//handle special chars first
-			case '-':
-				currentField = cachedInput.id;
-				maxLen = sizeof(cachedInput.id) - 1;
-				cacheFieldIndex = 0;
-				break;
-			case ':':
-				currentField = cachedInput.data;
-				maxLen = sizeof(cachedInput.data) - 1; //this isnt the proper value but an overestimate
-				cacheFieldIndex = 0;
-				break;
-			case '/':
-				currentField = cachedInput.checksum;
-				maxLen = sizeof(cachedInput.checksum) - 1;
-				cacheFieldIndex = 0;
-				cachedInput.hasChecksum = true;
-				checksumIndex = i;
-				break;
-			default:
-				if(cacheFieldIndex > maxLen) {
-					return false;
-				}
-				currentField[cacheFieldIndex++] = c;
-		}
-		i++;
-	}
-	if(cachedInput.hasChecksum) {
-		// parse the checksum value from the checksum field
-		uint16_t challenge = strtol(cachedInput.checksum, NULL, 16);
-		if(challenge == 0 && errno != 0) {
+bool transitionChar(char c) {
+	char *previousField = currentField;
+	byte previousIndex = currentIndex;
+	byte previousMaxLen = currentMaxLen;
+	switch(c) {
+		default:
 			return false;
-		}
-		uint16_t sum = checksum(readBuffer, checksumIndex);
-		return sum == challenge;
+		case '-':
+			currentField = input.id;
+			currentMaxLen = MAX_ID_LEN;
+			fieldsWritten++;
+			break;
+		case ':':
+			currentField = input.data;
+			currentMaxLen = MAX_DATA_LEN;
+			fieldsWritten++;
+			break;
+		case '/':
+			currentField = input.checksum;
+			currentMaxLen = CHECKSUM_LENGTH;
+			input.hasChecksum = true;
+			break;
+		case ';':
+			currentField = input.prefix;
+			currentMaxLen = MAX_PREFIX_LEN;
+			break;
 	}
-	else {
-		return true;
+	currentIndex = 0;
+	if(previousIndex <= previousMaxLen) {
+		previousField[previousIndex] = '\0'; // add null terminator to the previous field so we don't over scan
 	}
+	return true;
 }

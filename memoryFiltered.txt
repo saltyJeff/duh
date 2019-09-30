@@ -1,0 +1,56 @@
+duh:0000000008563264 0000000000000040 V vtable for std::exception@@GLIBCXX_3.4
+duh:0000000006089440 0000000000000056 V vtable for std::_Sp_counted_ptr_inplace<std::string, std::allocator<std::string>, (__gnu_cxx::_Lock_policy)2>
+duh:0000000006099072 0000000000000056 V vtable for std::_Sp_counted_base<(__gnu_cxx::_Lock_policy)2>
+duh:0000000006089248 0000000000000056 V vtable for std::_Sp_counted_ptr<std::__detail::_Nfa*, (__gnu_cxx::_Lock_policy)2>
+duh:0000000008564000 0000000000000040 V vtable for std::runtime_error@@GLIBCXX_3.4
+duh:0000000008563200 0000000000000040 V vtable for std::domain_error@@GLIBCXX_3.4
+duh:0000000008563936 0000000000000040 V vtable for std::logic_error@@GLIBCXX_3.4
+duh:0000000006089696 0000000000000032 V vtable for std::__detail::_Scanner<__gnu_cxx::__normal_iterator<char const*, std::string> >
+duh:0000000006093760 0000000000000032 V vtable for std::__detail::_Results
+duh:0000000006093696 0000000000000040 V vtable for std::__detail::_Nfa
+duh:0000000006089568 0000000000000032 V vtable for std::__detail::_SpecializedResults<__gnu_cxx::__normal_iterator<char const*, std::string>, std::allocator<std::sub_match<__gnu_cxx::__normal_iterator<char const*, std::string> > > >
+duh:0000000006089600 0000000000000048 V vtable for std::__detail::_SpecializedCursor<__gnu_cxx::__normal_iterator<char const*, std::string> >
+duh:0000000006093856 0000000000000048 V vtable for std::__detail::_PatternCursor
+duh:0000000006093664 0000000000000032 V vtable for std::__detail::_Scanner_base
+duh:0000000006093792 0000000000000040 V vtable for std::__detail::_Automaton
+duh:0000000008564064 0000000000000088 V vtable for __cxxabiv1::__vmi_class_type_info@@CXXABI_1.3
+duh:0000000008563712 0000000000000088 V vtable for __cxxabiv1::__si_class_type_info@@CXXABI_1.3
+duh:0000000008563872 0000000000000064 V vtable for __cxxabiv1::__function_type_info@@CXXABI_1.3
+duh:0000000008563328 0000000000000072 V vtable for __cxxabiv1::__pointer_type_info@@CXXABI_1.3
+duh:0000000008563104 0000000000000088 V vtable for __cxxabiv1::__class_type_info@@CXXABI_1.3
+duh:0000000008598360 0000000000000001 b std::__ioinit
+duh:0000000008562688 0000000000000001 B std::nothrow@@GLIBCXX_3.4
+duh:0000000008563424 0000000000000272 B std::cout@@GLIBCXX_3.4
+duh:0000000008562720 0000000000000272 B std::clog@@GLIBCXX_3.4
+duh:0000000008564224 0000000000000272 B std::cerr@@GLIBCXX_3.4
+duh:0000000008564184 0000000000000008 B std::ctype<char>::id@@GLIBCXX_3.4
+duh:0000000008603960 0000000000000008 b (anonymous namespace)::autoRegistrar12
+duh:0000000008603952 0000000000000008 b (anonymous namespace)::autoRegistrar8
+duh:0000000008603944 0000000000000008 b (anonymous namespace)::autoRegistrar5
+duh:0000000008603936 0000000000000008 b (anonymous namespace)::autoRegistrar1
+duh:0000000008603968 0000000000000008 b (anonymous namespace)::autoRegistrar1
+duh:0000000008603824 0000000000000029 B writeBuffer
+duh:0000000008562664 d __TMC_END__
+duh:0000000008603888 0000000000000029 B readBuffer
+duh:0000000008603928 0000000000000004 B noLen
+duh:0000000008562576 0000000000000012 D noChecksum
+duh:0000000008562592 0000000000000068 D multipleInvalids
+duh:0000000008603932 0000000000000004 B multiLen
+duh:0000000008560112 d __JCR_LIST__
+duh:0000000008560112 d __JCR_END__
+duh:0000000008603856 0000000000000029 B input
+duh:0000000008603920 0000000000000004 B goodLen
+duh:0000000008562528 0000000000000018 D goodChecksum
+duh:0000000008560640 d _GLOBAL_OFFSET_TABLE_
+duh:0000000008603918 0000000000000001 B fieldsWritten
+duh:0000000008603976 B _end
+duh:0000000008562660 D _edata
+duh:0000000008560120 d _DYNAMIC
+duh:0000000008562336 D __data_start
+duh:0000000008562504 0000000000000001 D currentMaxLen
+duh:0000000008603917 0000000000000001 B currentIndex
+duh:0000000008562496 0000000000000008 D currentField
+duh:0000000008564520 0000000000000001 b completed.6355
+duh:0000000008562660 B __bss_start
+duh:0000000008603924 0000000000000004 B badLen
+duh:0000000008562560 0000000000000016 D badChecksum

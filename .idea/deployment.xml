@@ -9,6 +9,16 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Lnxsrv (8d86ebaa-687b-4044-8d5d-61693c342b70)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.Cnlivga5GX" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-lnxsrv" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
       <paths name="g32">
         <serverdata>
           <mappings>

@@ -6,13 +6,13 @@
 #define DUH_DUHINPUT_H
 
 #include "../compat/compat.h"
+#include "consts.h"
 
 #ifndef INPUT_COUNT
 #define INPUT_COUNT 5
 #endif
 
-extern byte writeIndex;
-extern char writeBuffer[32];
+extern char writeBuffer[MAX_MESSAGE_SIZE + 1];
 class DuhInput {
 public:
 	const char *prefix;
@@ -20,10 +20,11 @@ public:
 	virtual ~DuhInput() = default;
 	DuhInput(const char *prefix, const char *id): prefix(prefix), id(id) {};
 
-	virtual bool poll() = 0;
-	virtual void encodeData() = 0;
+	virtual bool dirty() = 0;
+	virtual char *encodeData() = 0;
 	void serialize();
 };
+#ifdef RPC_SUPPORT
 void requestInput(char *reqId, char *prefix, char *inputId);
-
+#endif
 #endif //DUH_DUHINPUT_H

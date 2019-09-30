@@ -6,26 +6,29 @@
 #define DUH_DUHREAD_H
 
 #include "../compat/compat.h"
+#include "checksum.h"
+#include "consts.h"
 
 // read stuff
-extern char readBuffer[32];
+extern char readBuffer[MAX_MESSAGE_SIZE + 1];
 
-//char lengths are 1+ the minimum to hold the null byte
-struct DuhInputData {
+struct DuhInputCache {
 public:
-	char prefix[3] = "";
-	char id[4] = "";
-	char data[32] = "";
-	char checksum[5] = "";
-	bool hasChecksum;
+	//char lengths are 1+ the minimum to hold the null byte
+	char prefix[MAX_PREFIX_LEN + 1] = "";
+	char id[MAX_ID_LEN + 1] = "";
+	char data[MAX_DATA_LEN + 1] = "";
+	char checksum[CHECKSUM_LENGTH + 1] = "";
+
+	bool hasChecksum = false;
 };
-extern DuhInputData cachedInput;
-extern byte readIndex;
+
+extern DuhInputCache input;
 byte readDuh(char c);
 
 const byte SEND_NOTHING = 0;
 const byte SEND_ACK = 1;
 const byte SEND_NAK = 2;
-const byte NON_PRINTABLE = 3;
+const byte WARNING_DISCARDED = 3;
 
 #endif //DUH_DUHREAD_H

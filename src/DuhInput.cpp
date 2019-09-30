@@ -4,15 +4,15 @@
 #include "DuhInput.h"
 #include "checksum.h"
 
-byte writeIndex = 0;
-char writeBuffer[32];
+char writeBuffer[MAX_MESSAGE_SIZE + 1] = "";
 void DuhInput::serialize() {
-	sprintf(writeBuffer, "%.2s-%.3s:", prefix, id);
-	writeIndex = 7;
-	encodeData();
-	sprintf(writeBuffer + writeIndex, "/%04X;", checksum(writeBuffer, writeIndex));
+	char *data = encodeData();
+	byte checksumLen = sprintf(writeBuffer, PACKET_NO_CHECKSUM, prefix, id, data);
+	sprintf(writeBuffer + checksumLen, "/%04X;", checksum(writeBuffer, checksumLen));
 }
+#ifdef RPC_SUPPORT
 void requestInput(char *reqId, char *prefix, char *inputId) {
 	sprintf(writeBuffer, "RQ-%.3s:%.2s-%.3s", reqId, prefix, inputId);
 	sprintf(writeBuffer + 13, "/%04X;", checksum(writeBuffer, 13));
 }
+#endif
