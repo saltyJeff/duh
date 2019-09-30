@@ -1,16 +1,6 @@
 # duh
 dumb user handset
 
-The prebuilt binary is in the [cmake-build-default-mingw] folder, along with the needed dll s for running on Windows. I will try to make a build for OSX soon.
-
-## Configuration
-The serial port can be configured using environmental variables
-
-variable | description
----|---
-SERIAL_PORT|The location of the serial port (COM1 for example)
-BAUD_RATE|The baud rate for the serial port
-
 ## Summary
 Declares a simple protocol to communicate between a dumb client
 and a remote system.
