@@ -5,11 +5,11 @@
 #include "DuhRead.h"
 #include "checksum.h"
 
-DuhInputCache input;
+DuhInputCache parsed;
 char readBuffer[MAX_MESSAGE_SIZE + 1] = "";
 
 // finite state machine states for the parsing
-char *currentField = input.prefix;
+char *currentField = parsed.prefix;
 byte currentMaxLen = MAX_PREFIX_LEN;
 byte currentIndex = 0;
 byte fieldsWritten = 0;
@@ -28,19 +28,19 @@ byte readDuh(char c) {
 		if (fieldsWritten < 2) {
 			//not valid condition
 			fieldsWritten = 0;
-			input.hasChecksum = false;
+			parsed.hasChecksum = false;
 			return WARNING_DISCARDED; //received incomplete message, disposing
 		}
 		fieldsWritten = 0;
-		if (input.hasChecksum) {
-			input.hasChecksum = false;
+		if (parsed.hasChecksum) {
+			parsed.hasChecksum = false;
 			// parse the checksum value from the checksum field
-			uint16_t challenge = strtol(input.checksum, NULL, 16);
+			uint16_t challenge = strtol(parsed.checksum, NULL, 16);
 			if (challenge == 0 && errno != 0) {
 				return SEND_NAK;
 			}
-			byte bytesToHash = sprintf(readBuffer, PACKET_NO_CHECKSUM, input.prefix, input.id,
-			                           input.data);
+			byte bytesToHash = sprintf(readBuffer, PACKET_NO_CHECKSUM, parsed.prefix, parsed.id,
+			                           parsed.data);
 			uint16_t sum = checksum(readBuffer, bytesToHash);
 			if (sum != challenge) {
 				return SEND_NAK;
@@ -64,22 +64,22 @@ bool transitionChar(char c) {
 		default:
 			return false;
 		case '-':
-			currentField = input.id;
+			currentField = parsed.id;
 			currentMaxLen = MAX_ID_LEN;
 			fieldsWritten++;
 			break;
 		case ':':
-			currentField = input.data;
+			currentField = parsed.data;
 			currentMaxLen = MAX_DATA_LEN;
 			fieldsWritten++;
 			break;
 		case '/':
-			currentField = input.checksum;
+			currentField = parsed.checksum;
 			currentMaxLen = CHECKSUM_LENGTH;
-			input.hasChecksum = true;
+			parsed.hasChecksum = true;
 			break;
 		case ';':
-			currentField = input.prefix;
+			currentField = parsed.prefix;
 			currentMaxLen = MAX_PREFIX_LEN;
 			break;
 	}

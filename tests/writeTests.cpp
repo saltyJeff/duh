@@ -6,25 +6,11 @@
 #define DUH_WRITETESTS_CPP
 
 #include "../src/DuhInput.h"
-#include "../catch/streq.h"
-
-class TestInput: public DuhInput {
-public:
-	char *data;
-	TestInput(char *prefix, char *id, char *data): DuhInput(prefix, id) {
-		this->data = data;
-	}
-	virtual char *encodeData () {
-		return data;
-	}
-	virtual bool dirty () {
-		return true;
-	}
-};
-
 #include "../catch/catch.h"
 #include "../compat/compat.h"
 #include "../src/DuhRead.h"
+#include "testUtils.h"
+
 TEST_CASE("serializes valid input") {
 	TestInput valid("SW", "the", "0020");
 	valid.serialize();

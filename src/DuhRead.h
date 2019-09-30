@@ -23,7 +23,7 @@ public:
 	bool hasChecksum = false;
 };
 
-extern DuhInputCache input;
+extern DuhInputCache parsed;
 byte readDuh(char c);
 
 const byte SEND_NOTHING = 0;
