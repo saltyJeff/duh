@@ -9,7 +9,6 @@
 const byte expectedInputs = 3;
 
 TEST_CASE("parse a stream of valid characters") {
-	const byte expectedInputs = 3;
 	std::string stream = ";";
 	DuhInputCache parsedInputs[expectedInputs];
 
@@ -44,7 +43,7 @@ TEST_CASE("parse a stream with noise") {
 	std::string stream = ";";
 	DuhInputCache parsedInputs[expectedInputs];
 	char noises[expectedInputs][32] = { // all noises should end with a semicolon as a delim
-			"ababababa;",
+			"ab;;;abababa;",
 			"a-3/3343;2-234./;",
 			"?234aaj;lkj84"
 	};
@@ -70,7 +69,7 @@ TEST_CASE("parse a stream with noise") {
 	}
 
 	SECTION("check parsed inputs for validity") {
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < expectedInputs; i++) {
 			//printf("index %d id %s:\n", i, parsedInputs[i].id);
 			CHECK(duhEqual(inputs[i], parsedInputs[i]));
 		}

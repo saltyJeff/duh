@@ -2,8 +2,6 @@
 // Created by Jefferson on 9/29/2019.
 //
 
-#ifndef DUH_READTESTS_PP
-#define DUH_READTESTS_PP
 #include "../catch/catch.h"
 #include "../compat/compat.h"
 #include "../src/DuhRead.h"
@@ -82,4 +80,3 @@ TEST_CASE("parses garbage") {
 		CHECK( streq(parsed.data, "0020") );
 	}
 }
-#endif //DUH_READTESTS_PP

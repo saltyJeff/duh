@@ -2,9 +2,6 @@
 // Created by Jefferson on 9/29/2019.
 //
 
-#ifndef DUH_WRITETESTS_CPP
-#define DUH_WRITETESTS_CPP
-
 #include "../src/DuhInput.h"
 #include "../catch/catch.h"
 #include "../compat/compat.h"
@@ -26,4 +23,3 @@ TEST_CASE("cuts over long fields") {
 	valid.serialize();
 	REQUIRE(streq(writeBuffer, "SW-the:0020/7C17;"));
 }
-#endif //DUH_WRITETESTS_CPP
